@@ -21,8 +21,11 @@ zerops:
       # *optional*: which files / folders
       # to cache for the next build run
       cache:
+        - public
+        - dist
         - node_modules
         - package-lock.json
+        - pnpm-lock.json
 
     # ==== how to run your application ====
     run:
@@ -39,4 +42,4 @@ zerops:
           httpSupport: true
 
       # how to start your application
-      start: node dist/analog/server/index.mjs+++
+      start: node dist/analog/server/index.mjs

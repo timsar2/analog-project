@@ -13,7 +13,11 @@ export default defineConfig(({ mode }) => ({
     mainFields: ['module'],
   },
   plugins: [
-    analog(),
+    analog({
+      nitro: {
+        preset: 'node-server',
+      },
+    }),
     tailwindcss()
   ],
   test: {
