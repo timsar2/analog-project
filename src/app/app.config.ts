@@ -9,13 +9,16 @@ import {
   provideZoneChangeDetection
 } from '@angular/core';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
-import { provideFileRouter, requestContextInterceptor } from '@analogjs/router';
+import { provideFileRouter, requestContextInterceptor, withDebugRoutes } from '@analogjs/router';
+import { withComponentInputBinding } from '@angular/router';
+import { provideContent, withMarkdownRenderer } from '@analogjs/content';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideZoneChangeDetection({ eventCoalescing: true }),
-    provideFileRouter(),
+    provideFileRouter(withComponentInputBinding(), withDebugRoutes()),
+    provideContent(withMarkdownRenderer()),
     provideHttpClient(
       withFetch(),
       withInterceptors([requestContextInterceptor])
